@@ -1,0 +1,22 @@
+#sortable {
+    list-style-type: none;
+}
+
+#sortable li {
+    float: left;
+    list-style-type: none;
+    overflow: hidden;
+    max-width: 150px;
+    height: 150px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 28px;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}

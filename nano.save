@@ -1,0 +1,12 @@
+ admin@tronozac.rs
+    ServerName tronozac.rs
+    ServerAlias www.tronozac.rs
+    DocumentRoot /var/www/tronozac/public
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+    <Directory /var/www/tronozac/public/>
+     Options Indexes FollowSymLinks
+     AllowOverride All
+     Require all granted
+    </Directory>
+</VirtualHost>
