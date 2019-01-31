@@ -20,17 +20,22 @@ Route::prefix('projects')->group(function () {
 
     Route::get('/{id}', 'ProjectController@index')  ->name('getProjects');
 
+    Route::get('singleProject/{id}', 'ProjectController@getSingleProject')  ->name('singleProject');
+
+
 });
 
 
 Route::prefix('admin')->group(function () {
     Route::get('',                            'AdminController@index');
 
-    Route::get('/unos-fotografije',           'AdminController@insertPhoto')    ->name('admin.insertPhoto');
+    Route::get('/unos-fotografije',           'AdminController@insertProject')    ->name('admin.insertPhoto');
 
-    Route::post('/unos-fotografije',          'AdminController@photoUpload')    ->name('admin.upload.image');
+    Route::post('/unos-fotografije',          'AdminController@projectUpload')    ->name('admin.upload.image');
 
     Route::get('/upravljanje-fotografijama',  'AdminController@getPhotos')      ->name('admin.orderPhotos');
+
+    Route::post('/unos',          'AdminController@uploadProjectPhotos')    ->name('admin.upload.project.photos');
     
 
 });

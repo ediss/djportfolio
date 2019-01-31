@@ -15,7 +15,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-@yield('links')
 <!-- Bootstrap Core CSS -->
 <link href="{{url('')}}/admin_template/css/bootstrap.css" rel='stylesheet' type='text/css' />
 
@@ -48,6 +47,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 <link href="{{url('')}}/admin_template/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
+
+@yield('links')
+
 <style>
 #chartdiv {
   width: 100%;
@@ -765,6 +767,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 	<!-- Bootstrap Core JavaScript -->
    <script src="{{url('')}}/admin_template/js/bootstrap.js"> </script>
 	<!-- //Bootstrap Core JavaScript -->
+   <script src="{{url('')}}/admin_template/js/msdropdown/jquery.dd.min.js" type="text/javascript"></script>
 
 </body>
 </html>

@@ -8,12 +8,31 @@ use App\Providers\ProjectProvider;
 
 class ProjectController extends Controller
 {
-    public function index($projects = null) {
+
+    /**
+     * 
+     * Index function
+     * 
+     * get categories and projects from providers(services)
+     * 
+     * return to view
+     * 
+     */
+    public function index($category_id = null) {
         $data = [
             'categories'    => CategoryProvider::getCategories(),
-            'projects'      => ProjectProvider::getProjectsWhere($projects),
+            'projects'      => ProjectProvider::getProjectsWhere($category_id),
         ];
+      
         return view('pages.projects', $data);
+    }
+
+    public function getSingleProject($id_project) {
+        $data = [
+            'categories'    => CategoryProvider::getCategories(),
+            'projects' => ProjectProvider::getSingleProject($id_project)
+        ];
+        return view ('pages.project', $data);
     }
 
 

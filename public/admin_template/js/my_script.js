@@ -18,7 +18,7 @@ $( "#sortable" ).sortable({
             url         :   '/admin/upravljanje-pozicijama',
             method      :   "POST",
             data        :   {positions: positions},
-            dataType    :   'JSON',
+            //dataType    :   'JSON',
         //    / processData: false,
         beforeSend: function (xhr) {
             // Function needed from Laravel because of the CSRF Middleware

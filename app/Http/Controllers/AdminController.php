@@ -9,15 +9,26 @@ use Session;
 
 class AdminController extends Controller
 {
-    public function index() {
-        return view('pages.admin.test');
+   
+    /**
+     * 
+     * return view with form for upload
+     * 
+     */
+    public function insertProject() {
+        $data = [
+            'categories' =>  CategoryProvider::getCategories(),
+            'projects'   =>  ProjectProvider::getProjectsWhere($category_id = null)
+        ];
+        return view('pages.admin.add_photos', $data);
     }
 
-    public function insertPhoto() {
-        return view('pages.admin.add_photos', ['categories' =>  CategoryProvider::getCategories() ]);
-    }
-
-    public function photoUpload(Request $request) {
+    /**
+     * 
+     * Uploading projects(photos)
+     * 
+     */
+    public function projectUpload(Request $request) {
 
         if ($request->hasFile('new_image')) {
             $image              = $request->file('new_image');
@@ -36,6 +47,37 @@ class AdminController extends Controller
             //redirect sa errorom!
             echo "greska!";
         }
+    }
+
+
+    public function uploadProjectPhotos(Request $request) {
+
+        if ($request->hasFile('photos')) {
+
+            $photos = $request->file('photos');
+
+            foreach($photos as $photo) {
+
+                //$image              = $request->file('photos');
+                
+                $name               = str_random(5)."-".date('his')."-".str_random(3).".".$photo->getClientOriginalExtension();
+                $photo->move('images/portfolio/', $name);
+                
+
+                $destinationPath = 'images/portfolio'.'/'.$name;
+    
+                $project_id = $request->input('projects');
+
+    
+                ProjectProvider::uploadProjectPhotos($destinationPath, $project_id);
+    
+                Session::flash('success', 'Đole, uspešno si dodelio slike projektu! Svaka čast!');
+    
+               
+            }
+            return redirect('/admin/unos-fotografije');
+        }
+
     }
 
     public function getPhotos($projects = null) {
